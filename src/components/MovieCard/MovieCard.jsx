@@ -1,5 +1,5 @@
-import React from 'react'
-import './MovieCard.css'
+import React from 'react';
+import './MovieCard.css';
 
 function MovieCard(props) {
   return (
