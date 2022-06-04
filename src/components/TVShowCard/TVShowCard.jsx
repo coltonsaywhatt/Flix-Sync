@@ -4,12 +4,22 @@ import './TVShowCard.css';
 function TVShowCard(props) {
   return (
     <div className='tvShowCard'>
-      <img src= {`https://image.tmdb.org/t/p/original${props.poster_path}`} alt="" /> 
-        <h4>{props.name}</h4>
+      <div className='image'>
+        <div className='image-wrapper'>
+          <img src= {`https://image.tmdb.org/t/p/original${props.poster_path}`} alt="" />
+        </div>
+      </div>
+      <div className='content'>        
+        <h2>{props.name}</h2>
         <p>{props.first_air_date}</p>
-
+      </div> 
     </div>
   )
 }
 
 export default TVShowCard
+
+
+         
+        
+        

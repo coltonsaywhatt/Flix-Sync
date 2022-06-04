@@ -4,10 +4,15 @@ import './MovieCard.css';
 function MovieCard(props) {
   return (
     <div className='movieCard'>
-        <img src= {`https://image.tmdb.org/t/p/original${props.poster_path}`} alt="" /> 
-        <h4>{props.title}</h4>
+      <div className='image'>
+        <div className='image-wrapper'>
+          <img src= {`https://image.tmdb.org/t/p/original${props.poster_path}`} alt="" />
+        </div>
+      </div>         
+      <div className='content'>
+        <h2>{props.title}</h2>
         <p>{props.release_date}</p>
-
+      </div>
     </div>
   )
 }
