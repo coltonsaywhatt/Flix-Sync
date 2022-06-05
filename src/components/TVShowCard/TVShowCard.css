@@ -1,3 +1,7 @@
+* {
+	transition: 300ms;
+}
+
 .tvShowCard {
   position: relative;
   display: inline-flex;
@@ -7,6 +11,12 @@
   overflow: hidden;
   margin: 10px;
   width: 200px;
+  box-shadow: 0px 6px 18px rgba(0,0,0,.1);
+}
+
+.tvShowCard:hover {
+	transform:scale(1.10);
+	box-shadow: 0px 10px 25px rgba(0,0,0,.08);
 }
 
 .image-wrapper {
@@ -49,5 +59,10 @@
   color: black;
 }
 
-
-
+body {
+  /* background-image: url('https://wallpaperaccess.com/full/752715.jpg'); */
+  background-image: url('https://i.ibb.co/4mmB67v/752715.jpg');
+  background-size: cover;
+  /* filter: blur(8px);
+  -webkit-filter: blur(8px); */
+}

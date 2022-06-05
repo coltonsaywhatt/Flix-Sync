@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import * as userService from '../../utilities/users-service';
+import './NavBar.css';
 
 export default function NavBar({ user, setUser }) {
 
@@ -12,13 +13,26 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav>
-      <Link to="/movies">Movies</Link>
-      &nbsp; | &nbsp;
-      <Link to="/tv-shows">TV Shows</Link>
-      &nbsp; | &nbsp;
-      <span>Welcome, {user.name}</span>
-      &nbsp; | &nbsp;
-      <Link to="" onClick={handleLogOut}>Log Out</Link>
+      <div className='nav_content'>
+        <div className='sub_media'>
+          <div className='nav_wrapper'>
+            <img src="https://i.ibb.co/NLkL19K/Screen-Shot-2022-06-03-at-4-43-02-PM.png" alt="" />
+          </div>
+          <div className='search_bar'>
+            <input type="search" name="" id="search" placeholder='search' />
+            <button className='search-btn' type=''><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+          <div className='flex'>
+            <Link to="/movies">Movies</Link>
+            &nbsp; | &nbsp;
+            <Link to="/tv-shows">TV Shows</Link>
+            &nbsp; | &nbsp;
+            <span>Welcome, {user.name}</span>
+            &nbsp; | &nbsp;
+            <Link to="" onClick={handleLogOut}>Log Out</Link>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 }

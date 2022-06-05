@@ -26,7 +26,7 @@ function Movies() {
     return (
         <div>
             {movies.map((movie) => (
-              <MovieCard poster_path = {movie.poster_path} title = {movie.title} release_date = {movie.release_date}/>
+              <MovieCard poster_path = {movie.poster_path} title = {movie.title} vote_average = {movie.vote_average} release_date = {movie.release_date}/>
             ))}
         </div>
     )
