@@ -57,6 +57,26 @@
   margin: 0;
   padding: 0;
   color: black;
+  width: 100%;
+}
+
+.rating {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 4;
+  opacity: 0.9;
+  background-color: #333;
+  border-radius: 10px;
+  height: 30px;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.rating h4 {
+  color: tomato;
 }
 
 body {

@@ -4,6 +4,7 @@ import { getUser } from '../../utilities/users-service';
 import AuthPage from '../AuthPage/AuthPage';
 import NavBar from '../../components/NavBar/NavBar';
 import Movies from '../../components/Movies/Movies';
+import UpcomingMovies from '../../components/UpcomingMovies/UpcomingMovies'
 import TVShows from '../../components/TVShows/TVShows';
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             {/* Route components in here */}
             <Route path="/movies" element={<Movies />} />
+            <Route path="/upcoming-movies" element={<UpcomingMovies />} />
             <Route path="/tv-shows" element={<TVShows />} />
           </Routes>
         </>

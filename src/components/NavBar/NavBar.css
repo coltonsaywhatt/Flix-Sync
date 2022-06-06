@@ -10,7 +10,7 @@ nav {
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
-    z-index: 1;
+    z-index: 999;
 }
 
 .nav_content {
@@ -72,3 +72,32 @@ nav {
     font-weight: bold;
     text-decoration: none;
 }
+
+
+
+
+.menus {
+    height: auto;
+    overflow: hidden;
+    width: 180px;
+    background: #fff;
+    position: absolute;
+    z-index: 99;
+    display: none;
+    border: 1px solid #ccc;
+    border-top: none;
+    color: #333
+  }
+.menus a {
+    color: #333
+  }
+.menus li {
+    display: block;
+    width: 100%;
+    font: 12px Arial;
+    text-transform: none;
+  }
+ /* ul.menus {
+    display: block
+  } */
+

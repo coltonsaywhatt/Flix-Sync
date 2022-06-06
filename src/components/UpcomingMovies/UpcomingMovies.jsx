@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
-import MovieCard from '../../components/MovieCard/MovieCard';
+import MovieCard from '../MovieCard/MovieCard';
 
 function UpcomingMovies() {
   const [upcomingMovies, setUpcomingMovies] = useState([]);

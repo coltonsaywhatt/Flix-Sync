@@ -23,7 +23,20 @@ export default function NavBar({ user, setUser }) {
             <button className='search-btn' type=''><i class="fa-solid fa-magnifying-glass"></i></button>
           </div>
           <div className='flex'>
-            <Link to="/movies">Movies</Link>
+            <div>
+              <Link to="/movies">Movies</Link>
+            </div>
+            <ul className='menus'>
+              <li>
+                <Link to="/upcoming-movies">Upcoming</Link>
+              </li>
+              <li>
+                <Link to="">Now Playing</Link>
+              </li>
+              <li>
+                <Link to="">Top Rated</Link>
+              </li>
+            </ul>           
             &nbsp; | &nbsp;
             <Link to="/tv-shows">TV Shows</Link>
             &nbsp; | &nbsp;

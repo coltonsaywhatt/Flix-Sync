@@ -60,36 +60,27 @@
     margin: 0;
     padding: 0;
     color: black;
+    width: 100%;
   }
   
-  .vote_container {
+  .rating {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 4;
+    opacity: 0.9;
     background-color: #333;
-    height: 35px;
+    border-radius: 10px;
+    height: 30px;
     width: 40px;
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    margin: auto;
     justify-content: center;
-}
+    align-items: center;
+    display: flex;
+  }
 
-.vote_container h4 {
-    color: white;
-    font-weight: 900;
-    padding: 0;
-}
+  .rating h4 {
+    color: tomato;
+  }
 
-/* .background-image {
-	z-index: -1;
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	filter: blur(7px);
-	background: url('https://wallpaperaccess.com/full/752715.jpg');
-	transition: 0.3s ease-out;
-
-} */
   
   

@@ -8,6 +8,9 @@ function TVShowCard(props) {
         <div className='image-wrapper'>
           <img src= {`https://image.tmdb.org/t/p/original${props.poster_path}`} alt="" />
         </div>
+        <div className='rating'>
+          <h4>{props.vote_average}</h4>          
+        </div>
       </div>
       <div className='content'>        
         <h2>{props.name}</h2>
