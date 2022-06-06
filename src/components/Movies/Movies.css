@@ -1,0 +1,24 @@
+.container {
+    margin-top: 50px;
+}
+
+.pagination {
+    background-color: white;
+    width: 14rem;
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px 0 rgb(0 0 0 / 30%);
+}
+
+.pagination-btn {
+    display: flex;
+}
+
+.pagination-btn button {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 10px;
+}

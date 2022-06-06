@@ -11,6 +11,21 @@ export default function NavBar({ user, setUser }) {
     setUser(null);
   }
 
+  
+  const nav = document.querySelector(".nav");
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener("scroll", () => {
+    if (lastScrollY < window.scrollY) {
+      nav.classList.add("nav--hidden");
+    } else {
+      nav.classList.remove("nav--hidden");
+    }
+
+    lastScrollY = window.scrollY;
+  });
+  
+
   return (
     <nav className='nav'>
       <div className='nav_content'>
@@ -22,28 +37,33 @@ export default function NavBar({ user, setUser }) {
             <input type="search" name="" id="search" placeholder='search' />
             <button className='search-btn' type=''><i class="fa-solid fa-magnifying-glass"></i></button>
           </div>
-          <div className='flex'>
-            <div>
-              <Link to="/movies">Movies</Link>
+          <div className='dropdown'>
+            <button class="dropbtn">Movies &nbsp; 
+              <i class="fa fa-caret-down"></i>
+            </button>            
+            <div className='dropdown-content'>
+              <Link to="/movies">Popular</Link>
+              <Link to="/upcoming-movies">Upcoming</Link>
+              <Link to="">Now Playing</Link>
+              <Link to="">Top Rated</Link>
             </div>
-            <ul className='menus'>
-              <li>
-                <Link to="/upcoming-movies">Upcoming</Link>
-              </li>
-              <li>
-                <Link to="">Now Playing</Link>
-              </li>
-              <li>
-                <Link to="">Top Rated</Link>
-              </li>
-            </ul>           
-            &nbsp; | &nbsp;
-            <Link to="/tv-shows">TV Shows</Link>
-            &nbsp; | &nbsp;
+          </div>         
+          <div className='dropdown'>
+            <button class="dropbtn">TV Shows &nbsp; 
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div className='dropdown-content'>
+              <Link to="/tv-shows">Popular</Link>
+              <Link to="">Airing Tody</Link>
+              <Link to="">On TV</Link>
+              <Link to="">Top Rated</Link>
+            </div>
+          </div>          
+          <div>
             <span>Welcome, {user.name}</span>
             &nbsp; | &nbsp;
-            <Link to="" onClick={handleLogOut}>Log Out</Link>
-          </div>
+            <Link to="" onClick={handleLogOut}>Log Out</Link> 
+          </div>         
         </div>
       </div>
     </nav>
