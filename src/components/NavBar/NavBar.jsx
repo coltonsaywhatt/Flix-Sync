@@ -12,7 +12,7 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav>
+    <nav className='nav'>
       <div className='nav_content'>
         <div className='sub_media'>
           <div className='nav_wrapper'>

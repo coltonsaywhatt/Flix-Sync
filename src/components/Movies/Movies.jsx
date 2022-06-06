@@ -19,17 +19,17 @@ function Movies() {
     })
   }
 
-    useEffect(() => {
-        getMovies();
-    },[])
+  useEffect(() => {
+    getMovies();
+  },[])
 
-    return (
-        <div>
-            {movies.map((movie) => (
-              <MovieCard poster_path = {movie.poster_path} title = {movie.title} vote_average = {movie.vote_average} release_date = {movie.release_date}/>
-            ))}
-        </div>
-    )
+  return (
+    <div>
+      {movies.map((movie) => (
+        <MovieCard poster_path = {movie.poster_path} title = {movie.title} vote_average = {movie.vote_average} release_date = {movie.release_date.substring(0,4)}/>
+      ))}
+    </div>
+  )
 }
 
 export default Movies

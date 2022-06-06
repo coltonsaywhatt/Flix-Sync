@@ -11,6 +11,7 @@ function MovieCard(props) {
       </div>         
       <div className='content'>
         <h2>{props.title}</h2>
+        {/* <h4>{props.vote_average}</h4> */}
         <p>{props.release_date}</p>
       </div>
     </div>

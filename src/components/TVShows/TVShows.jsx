@@ -26,7 +26,7 @@ function TVShows() {
   return (
     <div>
       {tvshows.map((tvshow) => (
-        <TVShowCard poster_path = {tvshow.poster_path} name = {tvshow.name} first_air_date = {tvshow.first_air_date}/>
+        <TVShowCard poster_path = {tvshow.poster_path} name = {tvshow.name} first_air_date = {tvshow.first_air_date.substring(0,4)}/>
       ))}
     </div>
   )
