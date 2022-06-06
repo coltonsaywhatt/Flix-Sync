@@ -42,10 +42,10 @@ export default function NavBar({ user, setUser }) {
               <i class="fa fa-caret-down"></i>
             </button>            
             <div className='dropdown-content'>
-              <Link to="/movies">Popular</Link>
+              <Link to="/popular-movies">Popular</Link>
               <Link to="/upcoming-movies">Upcoming</Link>
-              <Link to="">Now Playing</Link>
-              <Link to="">Top Rated</Link>
+              <Link to="/now-playing-movies">Now Playing</Link>
+              <Link to="/top-rated-movies">Top Rated</Link>
             </div>
           </div>         
           <div className='dropdown'>
@@ -53,10 +53,10 @@ export default function NavBar({ user, setUser }) {
               <i class="fa fa-caret-down"></i>
             </button>
             <div className='dropdown-content'>
-              <Link to="/tv-shows">Popular</Link>
-              <Link to="">Airing Tody</Link>
-              <Link to="">On TV</Link>
-              <Link to="">Top Rated</Link>
+              <Link to="/popular-tVShows">Popular</Link>
+              <Link to="/airing-today-tVShows">Airing Tody</Link>
+              <Link to="/on-tv-tVShows">On TV</Link>
+              <Link to="/top-rated-tVShows">Top Rated</Link>
             </div>
           </div>          
           <div>

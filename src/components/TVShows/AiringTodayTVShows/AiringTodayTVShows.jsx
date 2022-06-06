@@ -1,21 +1,20 @@
-import React from 'react';
+import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
-import MovieCard from '../MovieCard/MovieCard';
-import './Movies.css';
+import TVShowCard from '../../TVShowCard/TVShowCard';
+import '../TVShows.css';
 
-function Movies() {
-  const [movies, setMovies] = useState([]);
+function AiringTodayTVShows() {
+  const [airingTodayTVShows, setAiringTodayTVShows] = useState([]);
   const [page, setPage] = useState(1);
 
-  function getMovies() {
-
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
+  function getAiringTodayTVShows() {
+    fetch(`https://api.themoviedb.org/3/tv/airing_today?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
     .then((req) => {
       return req.json();
     })
     .then((data) => {
-      setMovies(data.results);
+      setAiringTodayTVShows(data.results);
     })
     .catch((error) => {
       console.error(error);
@@ -23,13 +22,13 @@ function Movies() {
   }
 
   useEffect(() => {
-    getMovies();
+    getAiringTodayTVShows();
   },[page])
 
   return (
     <div className='container'>
-      {movies.map((movie) => (
-        <MovieCard key = {movie.title } poster_path = {movie.poster_path} title = {movie.title} vote_average = {movie.vote_average} release_date = {movie.release_date.substring(0,4)}/>
+      {airingTodayTVShows.map((tvshow) => (
+        <TVShowCard poster_path = {tvshow.poster_path} name = {tvshow.name} vote_average = {tvshow.vote_average} first_air_date = {tvshow.first_air_date.substring(0,4)}/>
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>
@@ -50,4 +49,4 @@ function Movies() {
   )
 }
 
-export default Movies
+export default AiringTodayTVShows
