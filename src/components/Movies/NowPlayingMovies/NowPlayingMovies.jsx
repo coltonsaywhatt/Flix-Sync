@@ -6,23 +6,22 @@ import '../Movies.css';
 
 function NowPlayingMovies() {
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
-  const [page, setPage] = useState(1);
-
-  function getNowPlayingMovies() {
-    fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-    .then((req) => {
-      return req.json();
-    })
-    .then((data) => {
-      setNowPlayingMovies(data.results);
-    })
-    .catch((error) => {
-      console.error(error);
-    })
-  }
+  const [page, setPage] = useState(1);  
 
   useEffect(() => {
-    getNowPlayingMovies();
+    function getNowPlayingMovies() {
+      fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
+      .then((req) => {
+        return req.json();
+      })
+      .then((data) => {
+        setNowPlayingMovies(data.results);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+    }
+    getNowPlayingMovies();    
   },[page])
 
   return (

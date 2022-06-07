@@ -6,22 +6,21 @@ import '../Movies.css';
 
 function PopularMovies() {
   const [popularMovies, setPopularMovies] = useState([]);
-  const [page, setPage] = useState(1);
-
-  function getPopularMovies() {
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-    .then((req) => {
-      return req.json();
-    })
-    .then((data) => {
-      setPopularMovies(data.results);
-    })
-    .catch((error) => {
-      console.error(error);
-    })
-  }
+  const [page, setPage] = useState(1);  
 
   useEffect(() => {
+    function getPopularMovies() {
+      fetch(`https://api.themoviedb.org/3/movie/popular?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
+      .then((req) => {
+        return req.json();
+      })
+      .then((data) => {
+        setPopularMovies(data.results);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+    }
     getPopularMovies();
   },[page])
 

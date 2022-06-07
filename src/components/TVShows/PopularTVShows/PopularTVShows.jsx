@@ -8,20 +8,19 @@ function PopularTVShows() {
   const [popularTVShows, setPopularTVShows] = useState([]);
   const [page, setPage] = useState(1);
 
-  function getPopularTVShows() {
-    fetch(`https://api.themoviedb.org/3/tv/popular?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-    .then((req) => {
-      return req.json();
-    })
-    .then((data) => {
-      setPopularTVShows(data.results);
-    })
-    .catch((error) => {
-      console.error(error);
-    })
-  }
-
   useEffect(() => {
+    function getPopularTVShows() {
+      fetch(`https://api.themoviedb.org/3/tv/popular?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
+      .then((req) => {
+        return req.json();
+      })
+      .then((data) => {
+        setPopularTVShows(data.results);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+    }
     getPopularTVShows();
   },[page])
 

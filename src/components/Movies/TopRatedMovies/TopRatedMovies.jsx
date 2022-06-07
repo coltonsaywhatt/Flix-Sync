@@ -6,22 +6,21 @@ import '../Movies.css';
 
 function TopRatedMovies() {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
-  const [page, setPage] = useState(1);
-
-  function getTopRatedMovies() {
-    fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-    .then((req) => {
-      return req.json();
-    })
-    .then((data) => {
-      setTopRatedMovies(data.results);
-    })
-    .catch((error) => {
-      console.error(error);
-    })
-  }
+  const [page, setPage] = useState(1);  
 
   useEffect(() => {
+    function getTopRatedMovies() {
+      fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
+      .then((req) => {
+        return req.json();
+      })
+      .then((data) => {
+        setTopRatedMovies(data.results);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+    }
     getTopRatedMovies();
   },[page])
 
