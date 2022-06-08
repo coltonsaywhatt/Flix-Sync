@@ -5,7 +5,8 @@ module.exports = {
   getPopular,
   getTopRated,
   getUpcoming,
-  getSearch,  
+  getSearch,
+  getDetails,  
 };
 
 async function getNowPlaying(req, res) {
@@ -56,5 +57,15 @@ async function getSearch(req, res) {
   .then(data => data.results)
 
   res.json(search)
+}
+
+async function getDetails(req, res) {
+  const movies = await fetch(`https://api.themoviedb.org/3/movie/{movie_id}?api_key=${process.env.API_KEY}&language=en-US`)
+      .then((res) => {
+        return res.json();
+      })
+      .then(data => data.results)
+
+      res.json(movies)
 }
 

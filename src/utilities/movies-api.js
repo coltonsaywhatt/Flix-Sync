@@ -20,3 +20,7 @@ export function getUpcoming() {
 export function getSearch(search) {
   return sendRequest(`${BASE_URL}/search`, "POST", {search});
 }
+
+export function getDetails() {
+  return sendRequest(`${BASE_URL}/details`);
+}
