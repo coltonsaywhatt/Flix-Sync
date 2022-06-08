@@ -1,24 +1,30 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as userService from '../../utilities/users-service';
 import './NavBar.css';
 import SearchBar from '../SearchBar/SearchBar';
 import { useState } from 'react';
+import * as moviesAPI from "../../utilities/movies-api"
 
-export default function NavBar({ user, setUser }) {
+export default function NavBar({ user, setUser, setResults }) {
 
   const [search, setSearch] = useState('');
+  const navigate = useNavigate()
 
-  function handleSearch() {
-    fetch(`https://api.themoviedb.org/3/search/multi?&query=${search}&api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=1&include_adult=false`)
-    .then((req) => {
-      return req.json();
-    })
-    .then((data) => {
-      console.log(data)
-    })
-    .catch((error) => {
-      console.error(error);
-    })
+  async function handleSearch() {
+    const searchResults = await moviesAPI.getSearch(search)
+    setResults(searchResults)
+    navigate("/search")
+
+    // fetch(`https://api.themoviedb.org/3/search/multi?&query=${search}&api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=1&include_adult=false`)
+    // .then((req) => {
+    //   return req.json();
+    // })
+    // .then((data) => {
+    //   console.log(data)
+    // })
+    // .catch((error) => {
+    //   console.error(error);
+    // })
   }
 
   function handleLogOut() {

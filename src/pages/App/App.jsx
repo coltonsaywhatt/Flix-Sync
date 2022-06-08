@@ -12,17 +12,21 @@ import OnTvTVShows from '../../components/TVShows/OnTvTVShows/OnTvTVShows';
 import PopularTVShows from '../../components/TVShows/PopularTVShows/PopularTVShows';
 import TopRatedTVShows from '../../components/TVShows/TopRatedTVShows/TopRatedTVShows';
 import './App.css';
+import SearchFlix from '../../components/SearchFlix/SearchFlix';
 
 function App() {
   const [user, setUser] = useState(getUser());
+  const [results, setResults] = useState([]);
 
   return (
     <main className="App">
       { user ?
         <>
-          <NavBar user={user} setUser={setUser} />
+          <NavBar user={user} setUser={setUser} setResults={setResults} />
           <Routes>
             {/* Route components in here */}
+            <Route path="/search" element={<SearchFlix results={results} />} />
+
             <Route path="/now-playing-movies" element={<NowPlayingMovies />} />
             <Route path="/popular-movies" element={<PopularMovies />} />
             <Route path="/top-rated-movies" element={<TopRatedMovies />} />

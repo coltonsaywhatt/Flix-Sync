@@ -6,15 +6,15 @@ function MovieCard(props) {
     <div className='movieCard'>
       <div className='image'>
         <div className='image-wrapper'>
-          <img src= {`https://image.tmdb.org/t/p/original${props.poster_path}`} alt="" />
+          <img src= {`https://image.tmdb.org/t/p/original${props.movie.poster_path}`} alt="" />
         </div>
         <div className='rating'>
-          <h4>{props.vote_average}</h4>          
+          <h4>{props.movie.vote_average}</h4>          
         </div>
       </div>         
       <div className='content'>
-        <h2>{props.title}</h2>
-        <p>{props.release_date}</p>
+        <h2>{props.movie.title}</h2>
+        <p>{props.movie.release_date}</p>
       </div>
     </div>
   )

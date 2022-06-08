@@ -30,7 +30,7 @@ function NowPlayingMovies() {
   return (
     <div className='container'>
       {nowPlayingMovies.map((movie) => (
-        <MovieCard key= {movie.title} poster_path= {movie.poster_path} title= {movie.title} backdrop_path= {movie.backdrop_path} overview= {movie.overview} vote_average= {movie.vote_average} release_date= {movie.release_date.substring(0,4)}/>
+        <MovieCard key = {movie.title} movie={movie}/>
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>

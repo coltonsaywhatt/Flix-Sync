@@ -29,7 +29,7 @@ function TopRatedMovies() {
   return (
     <div className='container'>
       {topRatedMovies.map((movie) => (
-        <MovieCard key = {movie.title} poster_path = {movie.poster_path} title = {movie.title} vote_average = {movie.vote_average} release_date = {movie.release_date.substring(0,4)}/>
+        <MovieCard key = {movie.title} movie={movie}/>
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>

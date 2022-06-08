@@ -16,3 +16,7 @@ export function getTopRated() {
 export function getUpcoming() {
   return sendRequest(`${BASE_URL}/upcoming`);
 }
+
+export function getSearch(search) {
+  return sendRequest(`${BASE_URL}/search`, "POST", {search});
+}
