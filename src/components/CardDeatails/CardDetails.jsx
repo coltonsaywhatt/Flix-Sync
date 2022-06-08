@@ -21,7 +21,9 @@ function MovieDetails() {
         </ul>
       </div>
     </div>
-    <div class="blur_back backdrop"><img alt="" src="https://occ-0-2433-448.1.nflxso.net/art/cd5c9/3e192edf2027c536e25bb5d3b6ac93ced77cd5c9.jpg"/></div>
+    <div class="blur_back backdrop">
+      <img alt="" src={`https://image.tmdb.org/t/p/original${props.backdrop}`}/>
+    </div>
   </div>
 
   )

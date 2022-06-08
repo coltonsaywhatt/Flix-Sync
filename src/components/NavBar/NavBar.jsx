@@ -28,18 +28,18 @@ export default function NavBar({ user, setUser }) {
     setUser(null);
   }
   
-  const nav = document.querySelector(".nav");
-  let lastScrollY = window.scrollY;
+  // const nav = document.querySelector(".nav");
+  // let lastScrollY = window.scrollY;
 
-  window.addEventListener("scroll", () => {
-    if (lastScrollY < window.scrollY) {
-      nav.classList.add("nav--hidden");
-    } else {
-      nav.classList.remove("nav--hidden");
-    }
+  // window.addEventListener("scroll", () => {
+  //   if (lastScrollY < window.scrollY) {
+  //     nav.classList.add("nav--hidden");
+  //   } else {
+  //     nav.classList.remove("nav--hidden");
+  //   }
 
-    lastScrollY = window.scrollY;
-  });  
+  //   lastScrollY = window.scrollY;
+  // });  
 
   return (
     <nav className='nav'>

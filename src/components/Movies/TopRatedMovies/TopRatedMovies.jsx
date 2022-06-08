@@ -3,26 +3,28 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import MovieCard from '../../MovieCard/MovieCard';
 import '../Movies.css';
+import * as moviesAPI from "../../../utilities/movies-api"
 
 function TopRatedMovies() {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
-  const [page, setPage] = useState(1);  
 
   useEffect(() => {
-    function getTopRatedMovies() {
-      fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-      .then((req) => {
-        return req.json();
-      })
-      .then((data) => {
-        setTopRatedMovies(data.results);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
+    async function getTopRatedMovies() {
+      const topRated = await moviesAPI.getTopRated()
+      setTopRatedMovies(topRated);
+      // fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=1`)
+      // .then((req) => {
+      //   return req.json();
+      // })
+      // .then((data) => {
+      //   setTopRatedMovies(data.results);
+      // })
+      // .catch((error) => {
+      //   console.error(error);
+      // })
     }
     getTopRatedMovies();
-  },[page])
+  },[])
 
   return (
     <div className='container'>
@@ -31,7 +33,7 @@ function TopRatedMovies() {
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>
-          <button onClick={() => 
+          {/* <button onClick={() => 
             setPage(page-1)
           }>
             PREVIOUS PAGE
@@ -41,7 +43,7 @@ function TopRatedMovies() {
             setPage(page+1)
           }>
             NEXT PAGE
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

@@ -3,26 +3,28 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import MovieCard from '../../MovieCard/MovieCard';
 import '../Movies.css';
+import * as moviesAPI from "../../../utilities/movies-api"
 
 function UpcomingMovies() {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    function getUpcomingMovies() {
-      fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-      .then((req) => {
-        return req.json();
-      })
-      .then((data) => {
-        setUpcomingMovies(data.results);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
+    async function getUpcomingMovies() {
+      const upcoming = await moviesAPI.getUpcoming()
+      setUpcomingMovies(upcoming);
+      // fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
+      // .then((req) => {
+      //   return req.json();
+      // })
+      // .then((data) => {
+      //   setUpcomingMovies(data.results);
+      // })
+      // .catch((error) => {
+      //   console.error(error);
+      // })
     }
     getUpcomingMovies();
-  },[page])
+  },[])
 
   return (
     <div className='container'>
@@ -31,7 +33,7 @@ function UpcomingMovies() {
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>
-          <button onClick={() => 
+          {/* <button onClick={() => 
             setPage(page-1)
           }>
             PREVIOUS PAGE
@@ -41,7 +43,7 @@ function UpcomingMovies() {
             setPage(page+1)
           }>
             NEXT PAGE
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

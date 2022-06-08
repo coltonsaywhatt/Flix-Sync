@@ -3,35 +3,38 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import MovieCard from '../../MovieCard/MovieCard';
 import '../Movies.css';
+import * as moviesAPI from "../../../utilities/movies-api"
 
 function NowPlayingMovies() {
-  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
-  const [page, setPage] = useState(1);  
+  const [nowPlayingMovies, setNowPlayingMovies] = useState([]); 
 
   useEffect(() => {
-    function getNowPlayingMovies() {
-      fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-      .then((req) => {
-        return req.json();
-      })
-      .then((data) => {
-        setNowPlayingMovies(data.results);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
+    async function getNowPlayingMovies() {
+      const nowPlaying = await moviesAPI.getNowPlaying()
+      setNowPlayingMovies(nowPlaying);
+
+      // fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
+      // .then((req) => {
+      //   return req.json();
+      // })
+      // .then((data) => {
+      //   setNowPlayingMovies(data.results);
+      // })
+      // .catch((error) => {
+      //   console.error(error);
+      // })
     }
     getNowPlayingMovies();    
-  },[page])
+  },[])
 
   return (
     <div className='container'>
       {nowPlayingMovies.map((movie) => (
-        <MovieCard key = {movie.title} poster_path = {movie.poster_path} title = {movie.title} vote_average = {movie.vote_average} release_date = {movie.release_date.substring(0,4)}/>
+        <MovieCard key= {movie.title} poster_path= {movie.poster_path} title= {movie.title} backdrop_path= {movie.backdrop_path} overview= {movie.overview} vote_average= {movie.vote_average} release_date= {movie.release_date.substring(0,4)}/>
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>
-          <button onClick={() => 
+          {/* <button onClick={() => 
             setPage(page-1)
           }>
             PREVIOUS PAGE
@@ -41,7 +44,7 @@ function NowPlayingMovies() {
             setPage(page+1)
           }>
             NEXT PAGE
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

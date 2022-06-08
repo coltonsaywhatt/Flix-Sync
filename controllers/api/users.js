@@ -1,12 +1,18 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../../models/user');
+const fetch = require('node-fetch')
 
 module.exports = {
   create,
   login,
-  checkToken
+  checkToken,
+  search
 };
+
+async function search(req, res) {
+  console.log(search);
+}
 
 function checkToken(req, res) {
   console.log(req.user);

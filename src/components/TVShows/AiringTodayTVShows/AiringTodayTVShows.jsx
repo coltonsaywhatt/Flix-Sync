@@ -3,26 +3,28 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import TVShowCard from '../../TVShowCard/TVShowCard';
 import '../TVShows.css';
+import * as tvshowsAPI from "../../../utilities/tvshows-api";
 
 function AiringTodayTVShows() {
   const [airingTodayTVShows, setAiringTodayTVShows] = useState([]);
-  const [page, setPage] = useState(1);  
 
   useEffect(() => {
-    function getAiringTodayTVShows() {
-      fetch(`https://api.themoviedb.org/3/tv/airing_today?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-      .then((req) => {
-        return req.json();
-      })
-      .then((data) => {
-        setAiringTodayTVShows(data.results);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
+    async function getAiringTodayTVShows() {
+      const airingToday = await tvshowsAPI.getAiringToday()
+      setAiringTodayTVShows(airingToday);
+      // fetch(`https://api.themoviedb.org/3/tv/airing_today?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
+      // .then((req) => {
+      //   return req.json();
+      // })
+      // .then((data) => {
+      //   setAiringTodayTVShows(data.results);
+      // })
+      // .catch((error) => {
+      //   console.error(error);
+      // })
     }
     getAiringTodayTVShows();
-  },[page])
+  },[])
 
   return (
     <div className='container'>
@@ -31,7 +33,7 @@ function AiringTodayTVShows() {
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>
-          <button onClick={() => 
+          {/* <button onClick={() => 
             setPage(page-1)
           }>
             PREVIOUS PAGE
@@ -41,7 +43,7 @@ function AiringTodayTVShows() {
             setPage(page+1)
           }>
             NEXT PAGE
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
