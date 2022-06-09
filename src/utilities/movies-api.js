@@ -21,6 +21,6 @@ export function getSearch(search) {
   return sendRequest(`${BASE_URL}/search`, "POST", {search});
 }
 
-export function getDetails() {
-  return sendRequest(`${BASE_URL}/details`);
+export function getDetails(id) {
+  return sendRequest(`${BASE_URL}/details`, "POST", {id});
 }

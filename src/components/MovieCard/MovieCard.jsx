@@ -1,9 +1,15 @@
 import React from 'react';
-import './MovieCard.css';
+import './MovieCard.css'; 
 
 function MovieCard(props) {
+
+  function handleClick() {
+    props.changeSelectedMedia(props.movie)
+  }
+
+
   return (
-    <div className='movieCard'>
+    <div className='movieCard' onClick={handleClick}>
       <div className='image'>
         <div className='image-wrapper'>
           <img src= {`https://image.tmdb.org/t/p/original${props.movie.poster_path}`} alt="" />

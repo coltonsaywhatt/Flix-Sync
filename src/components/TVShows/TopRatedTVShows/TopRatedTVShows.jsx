@@ -29,7 +29,7 @@ function TopRatedTVShows() {
   return (
     <div className='container'>
       {topRatedTVShows.map((tvshow) => (
-        <TVShowCard poster_path = {tvshow.poster_path} name = {tvshow.name} vote_average = {tvshow.vote_average} first_air_date = {tvshow.first_air_date.substring(0,4)}/>
+        <TVShowCard key= {tvshow.name} tvshow={tvshow}/>
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>

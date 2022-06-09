@@ -78,6 +78,15 @@ export default function NavBar({ user, setUser, setResults }) {
                 <Link to="/top-rated-tVShows">Top Rated</Link>
               </div>
             </div>
+            <div className='dropdown'>
+              <button class="dropbtn">My Lists &nbsp; 
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div className='dropdown-content'>
+                <Link to="">Watch List</Link>
+                <Link to="">Watched List</Link>
+              </div>
+            </div>
           </div>          
           <div>
             <span>Welcome, {user.name}</span>

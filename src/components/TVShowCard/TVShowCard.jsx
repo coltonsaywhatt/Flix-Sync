@@ -6,15 +6,15 @@ function TVShowCard(props) {
     <div className='tvShowCard'>
       <div className='image'>
         <div className='image-wrapper'>
-          <img src= {`https://image.tmdb.org/t/p/original${props.poster_path}`} alt="" />
+          <img src= {`https://image.tmdb.org/t/p/original${props.tvshow.poster_path}`} alt="" />
         </div>
         <div className='rating'>
-          <h4>{props.vote_average}</h4>          
+          <h4>{props.tvshow.vote_average}</h4>          
         </div>
       </div>
       <div className='content'>        
-        <h2>{props.name}</h2>
-        <p>{props.first_air_date}</p>
+        <h2>{props.tvshow.name}</h2>
+        <p>{props.tvshow.first_air_date.substring(0, 4)}</p>
       </div> 
     </div>
   )

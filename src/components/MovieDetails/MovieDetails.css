@@ -17,6 +17,17 @@
   font-family: 'Montserrat', helvetica, arial, sans-serif;
 }
 
+.close_btn {
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1;  
+}
+
+.close_btn i {
+  color: white;
+  font-size: 25px;
+}
+
 .movie_card .info_section {
   position: relative;
   width: 100%;
@@ -111,9 +122,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .movie_header {
-    width: 60%;
-  }
   .movie_desc {
     width: 50%;
   }
