@@ -5,6 +5,7 @@ function MovieCard(props) {
 
   function handleClick() {
     props.changeSelectedMedia(props.movie)
+    props.setShowModal(true)
   }
 
 

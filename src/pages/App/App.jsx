@@ -33,7 +33,7 @@ function App() {
           <NavBar user={user} setUser={setUser} setResults={setResults} />
           <Routes>
             {/* Route components in here */}
-            <Route path="/search" element={<SearchFlix results={results}  changeSelectedMedia={changeSelectedMedia}/>} />
+            <Route path="/search" element={<SearchFlix results={results} selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia}/>} />
 
             <Route path="/now-playing-movies" element={<NowPlayingMovies changeSelectedMedia={changeSelectedMedia} />} />
             <Route path="/popular-movies" element={<PopularMovies changeSelectedMedia={changeSelectedMedia} />} />
