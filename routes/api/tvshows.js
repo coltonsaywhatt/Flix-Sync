@@ -9,4 +9,5 @@ router.get('/onTv', ensureLoggedIn, tvshowsCtrl.getOnTv);
 router.get('/popular', ensureLoggedIn, tvshowsCtrl.getPopular);
 router.get('/topRated', ensureLoggedIn, tvshowsCtrl.getTopRated);
 
+
 module.exports = router;

@@ -14,6 +14,7 @@ import TopRatedTVShows from '../../components/TVShows/TopRatedTVShows/TopRatedTV
 import './App.css';
 import SearchFlix from '../../components/SearchFlix/SearchFlix';
 import * as Moviesapi from '../../utilities/movies-api'
+import MovieDetails from '../../components/MovieDetails/MovieDetails';
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -22,7 +23,7 @@ function App() {
   
   async function changeSelectedMedia (newMedia) {
     const movieDetails = await Moviesapi.getDetails(newMedia.id);
-    setSelectedMedia(newMedia);
+    setSelectedMedia(movieDetails);
     console.log(movieDetails)
   }
 
@@ -30,15 +31,16 @@ function App() {
     <main className="App">
       { user ?
         <>
+          <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} />
           <NavBar user={user} setUser={setUser} setResults={setResults} />
           <Routes>
             {/* Route components in here */}
             <Route path="/search" element={<SearchFlix results={results} selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia}/>} />
-
-            <Route path="/now-playing-movies" element={<NowPlayingMovies changeSelectedMedia={changeSelectedMedia} />} />
-            <Route path="/popular-movies" element={<PopularMovies changeSelectedMedia={changeSelectedMedia} />} />
-            <Route path="/top-rated-movies" element={<TopRatedMovies changeSelectedMedia={changeSelectedMedia} />} />
-            <Route path="/upcoming-movies" element={<UpcomingMovies changeSelectedMedia={changeSelectedMedia} />} />
+            
+            <Route path="/now-playing-movies" element={<NowPlayingMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} />} />
+            <Route path="/popular-movies" element={<PopularMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} />} />
+            <Route path="/top-rated-movies" element={<TopRatedMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} />} />
+            <Route path="/upcoming-movies" element={<UpcomingMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} />} />
 
             <Route path="/airing-today-tVShows" element={<AiringTodayTVShows changeSelectedMedia={changeSelectedMedia}  />} />
             <Route path="/on-tv-tVShows" element={<OnTvTVShows changeSelectedMedia={changeSelectedMedia} />} />

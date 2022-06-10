@@ -2,20 +2,16 @@ import React, { useState } from 'react'
 import MovieCard from '../MovieCard/MovieCard'
 import TVShowCard from '../TVShowCard/TVShowCard'
 import '../../components/Movies/Movies.css';
-import './SearchFlix.css'
-import MovieDetails from '../MovieDetails/MovieDetails';
 
 function SearchFlix({results, changeSelectedMedia, selectedMedia}) {
-  const [showModal, setShowModal]= useState(false)
-  
+    
   return (
     <div className='container'>
-      <MovieDetails showModal= {showModal} setShowModal= {setShowModal} selectedMedia= {selectedMedia} />
-      {results.map((result) => {
+      {results.map((result, idx) => {
         if(result.media_type==='movie') {
-          return <MovieCard key= {result.title} movie= {result} changeSelectedMedia={changeSelectedMedia} setShowModal={setShowModal}/>
+          return <MovieCard key= {idx} movie= {result} changeSelectedMedia={changeSelectedMedia} />
         }else if(result.media_type==='tv') {
-          return <TVShowCard key= {result.name} tvshow= {result} changeSelectedMedia= {changeSelectedMedia} setShowModal={setShowModal}/>
+          return <TVShowCard key= {idx} tvshow= {result} changeSelectedMedia= {changeSelectedMedia} />
         }
           
       })}

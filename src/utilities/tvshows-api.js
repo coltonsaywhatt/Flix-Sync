@@ -16,3 +16,7 @@ export function getPopular() {
 export function getTopRated() {
   return sendRequest(`${BASE_URL}/topRated`);
 }
+
+export function getDetails(id) {
+  return sendRequest(`${BASE_URL}/details`, "POST", {id});
+}

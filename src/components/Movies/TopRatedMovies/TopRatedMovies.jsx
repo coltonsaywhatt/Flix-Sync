@@ -5,7 +5,7 @@ import MovieCard from '../../MovieCard/MovieCard';
 import '../Movies.css';
 import * as moviesAPI from "../../../utilities/movies-api"
 
-function TopRatedMovies() {
+function TopRatedMovies({changeSelectedMedia}) {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function TopRatedMovies() {
   return (
     <div className='container'>
       {topRatedMovies.map((movie) => (
-        <MovieCard key = {movie.title} movie={movie}/>
+        <MovieCard key = {movie.title} movie={movie} changeSelectedMedia= {changeSelectedMedia}/>
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>

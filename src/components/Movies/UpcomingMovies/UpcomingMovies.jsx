@@ -5,23 +5,13 @@ import MovieCard from '../../MovieCard/MovieCard';
 import '../Movies.css';
 import * as moviesAPI from "../../../utilities/movies-api"
 
-function UpcomingMovies() {
+function UpcomingMovies({changeSelectedMedia}) {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
 
   useEffect(() => {
     async function getUpcomingMovies() {
       const upcoming = await moviesAPI.getUpcoming()
       setUpcomingMovies(upcoming);
-      // fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-      // .then((req) => {
-      //   return req.json();
-      // })
-      // .then((data) => {
-      //   setUpcomingMovies(data.results);
-      // })
-      // .catch((error) => {
-      //   console.error(error);
-      // })
     }
     getUpcomingMovies();
   },[])
@@ -29,7 +19,7 @@ function UpcomingMovies() {
   return (
     <div className='container'>
       {upcomingMovies.map((movie) => (
-        <MovieCard key = {movie.title} movie={movie}/>
+        <MovieCard key = {movie.title} movie={movie} changeSelectedMedia= {changeSelectedMedia}/>
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>

@@ -5,23 +5,13 @@ import MovieCard from '../../MovieCard/MovieCard';
 import '../Movies.css';
 import * as moviesAPI from "../../../utilities/movies-api"
 
-function PopularMovies() {
+function PopularMovies({changeSelectedMedia}) {
   const [popularMovies, setPopularMovies] = useState([]); 
 
   useEffect(() => {
     async function getPopularMovies() {
       const popular = await moviesAPI.getPopular()
       setPopularMovies(popular);
-      // fetch(`https://api.themoviedb.org/3/movie/popular?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-      // .then((req) => {
-      //   return req.json();
-      // })
-      // .then((data) => {
-      //   setPopularMovies(data.results);
-      // })
-      // .catch((error) => {
-      //   console.error(error);
-      // })
     }
     getPopularMovies();
   },[])
@@ -29,7 +19,7 @@ function PopularMovies() {
   return (
     <div className='container'>
       {popularMovies.map((movie) => (
-        <MovieCard key = {movie.title} movie={movie}/>
+        <MovieCard key = {movie.title} movie={movie} changeSelectedMedia= {changeSelectedMedia}/>
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>
