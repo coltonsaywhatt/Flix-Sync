@@ -24,7 +24,7 @@ function App() {
   async function changeSelectedMedia (newMedia) {
     const movieDetails = await Moviesapi.getDetails(newMedia.id);
     setSelectedMedia(movieDetails);
-    console.log(movieDetails)
+    // console.log(movieDetails)
   }
 
   return (

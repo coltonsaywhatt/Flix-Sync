@@ -17,6 +17,6 @@ export function getTopRated() {
   return sendRequest(`${BASE_URL}/topRated`);
 }
 
-export function getDetails(id) {
-  return sendRequest(`${BASE_URL}/details`, "POST", {id});
+export function getTvDetails(id) {
+  return sendRequest(`${BASE_URL}/tvDetails`, "POST", {id});
 }

@@ -5,7 +5,7 @@ module.exports = {
   getOnTv,
   getPopular,
   getTopRated,
-  // getDetails,   
+  getTvDetails,   
 };
 
 async function getAiringToday(req, res) {
@@ -48,7 +48,7 @@ async function getTopRated(req, res) {
       res.json(tvshows)
 }
 
-async function getDetails(req, res) {
+async function getTvDetails(req, res) {
   const {id} = req.body;
   const tvshow = await fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.API_KEY}&language=en-US`)
       .then((res) => {

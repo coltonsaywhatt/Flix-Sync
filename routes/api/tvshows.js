@@ -8,6 +8,6 @@ router.get('/airingToday', ensureLoggedIn, tvshowsCtrl.getAiringToday);
 router.get('/onTv', ensureLoggedIn, tvshowsCtrl.getOnTv);
 router.get('/popular', ensureLoggedIn, tvshowsCtrl.getPopular);
 router.get('/topRated', ensureLoggedIn, tvshowsCtrl.getTopRated);
-
+router.post('/tvDetails', ensureLoggedIn, tvshowsCtrl.getTvDetails);
 
 module.exports = router;

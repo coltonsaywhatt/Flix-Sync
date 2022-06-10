@@ -4,7 +4,7 @@ import './TVShowCard.css';
 function TVShowCard(props) {
 
   function handleClick() {
-    props.changeSelectedMedia(props.movie)
+    props.changeSelectedMedia(props.tvshow)
   }
 
   return (
@@ -26,8 +26,3 @@ function TVShowCard(props) {
 }
 
 export default TVShowCard
-
-
-         
-        
-        

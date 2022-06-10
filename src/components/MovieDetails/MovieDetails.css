@@ -7,22 +7,27 @@
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 15px;
   transition: all 0.4s;
   font-family: 'Montserrat', helvetica, arial, sans-serif;
   width: 700px;
   margin: 70px auto;
   min-height: 350px;
   height: auto;
+  border: 4px solid white;
 }
 
 .close_btn {
-  display: flex;
-  justify-content: flex-end;
   z-index: 1;  
+  display: flex;
+  justify-content: end;
+  margin-right: 30px;
+  margin-top: 20px;
+  
 }
 
 .close_btn i {
+  z-index: 2;
   color: white;
   font-size: 25px;
   cursor: pointer;

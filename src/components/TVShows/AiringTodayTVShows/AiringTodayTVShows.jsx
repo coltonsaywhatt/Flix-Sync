@@ -5,23 +5,13 @@ import TVShowCard from '../../TVShowCard/TVShowCard';
 import '../TVShows.css';
 import * as tvshowsAPI from "../../../utilities/tvshows-api";
 
-function AiringTodayTVShows() {
+function AiringTodayTVShows({changeSelectedMedia}) {
   const [airingTodayTVShows, setAiringTodayTVShows] = useState([]);
 
   useEffect(() => {
     async function getAiringTodayTVShows() {
       const airingToday = await tvshowsAPI.getAiringToday()
       setAiringTodayTVShows(airingToday);
-      // fetch(`https://api.themoviedb.org/3/tv/airing_today?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-      // .then((req) => {
-      //   return req.json();
-      // })
-      // .then((data) => {
-      //   setAiringTodayTVShows(data.results);
-      // })
-      // .catch((error) => {
-      //   console.error(error);
-      // })
     }
     getAiringTodayTVShows();
   },[])
@@ -29,7 +19,7 @@ function AiringTodayTVShows() {
   return (
     <div className='container'>
       {airingTodayTVShows.map((tvshow) => (
-        <TVShowCard key= {tvshow.name} tvshow={tvshow}/>
+        <TVShowCard key= {tvshow.name} tvshow={tvshow} changeSelectedMedia= {changeSelectedMedia}/>
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>
