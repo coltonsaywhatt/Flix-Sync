@@ -24,3 +24,7 @@ export function getSearch(search) {
 export function getDetails(id) {
   return sendRequest(`${BASE_URL}/details`, "POST", {id});
 }
+
+export function add(movie) {
+  return sendRequest(BASE_URL, "POST", movie);
+}

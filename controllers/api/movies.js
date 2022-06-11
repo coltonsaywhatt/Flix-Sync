@@ -1,4 +1,5 @@
 const fetch = require('node-fetch')
+const Movie = require('../../models/movie')
 
 module.exports = {
   getNowPlaying,
@@ -6,7 +7,8 @@ module.exports = {
   getTopRated,
   getUpcoming,
   getSearch,
-  getDetails,  
+  getDetails,
+  addToWatchList,  
 };
 
 async function getNowPlaying(req, res) {
@@ -68,3 +70,20 @@ async function getDetails(req, res) {
   res.json(movie);      
 }
 
+async function addToWatchList(req, res) {
+  console.log(req.body)
+  let movie = await Movie.findOne({apiId: req.body.apiId})
+  if (movie) {
+    let user = movie.watchList.includes(req.user_id)
+    if (user) return
+      movie.watchList.push(req.user._id);
+      await movie.save();
+      res.json(movie);
+
+  } else {
+      req.body.watchList = req.user._id;
+      const newWatchList = new Movie(req.body);
+      await newWatchList.save();
+      res.json(newWatchList);
+  }
+}

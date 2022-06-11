@@ -3,14 +3,14 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import TVShowCard from '../../TVShowCard/TVShowCard';
 import '../TVShows.css';
-import * as tvshowsAPI from "../../../utilities/tvshows-api";
+import * as TvShowAPI from "../../../utilities/tvshows-api";
 
-function AiringTodayTVShows({changeSelectedMedia}) {
+function AiringTodayTVShows({changeSelectedTvMedia}) {
   const [airingTodayTVShows, setAiringTodayTVShows] = useState([]);
 
   useEffect(() => {
     async function getAiringTodayTVShows() {
-      const airingToday = await tvshowsAPI.getAiringToday()
+      const airingToday = await TvShowAPI.getAiringToday()
       setAiringTodayTVShows(airingToday);
     }
     getAiringTodayTVShows();
@@ -19,7 +19,7 @@ function AiringTodayTVShows({changeSelectedMedia}) {
   return (
     <div className='container'>
       {airingTodayTVShows.map((tvshow) => (
-        <TVShowCard key= {tvshow.name} tvshow={tvshow} changeSelectedMedia= {changeSelectedMedia}/>
+        <TVShowCard key= {tvshow.name} tvshow={tvshow} changeSelectedTvMedia= {changeSelectedTvMedia}/>
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>

@@ -87,12 +87,20 @@ export default function NavBar({ user, setUser, setResults }) {
                 <Link to="">Watched List</Link>
               </div>
             </div>
+            <div className='dropdown'>
+              <button class="dropbtn">Welcome, {user.name} &nbsp;
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div className='dropdown-content'>
+                <Link to="" onClick={handleLogOut}>Log Out</Link> 
+              </div>
+            </div>
           </div>          
-          <div>
+          {/* <div>
             <span>Welcome, {user.name}</span>
             &nbsp; | &nbsp;
             <Link to="" onClick={handleLogOut}>Log Out</Link> 
-          </div>         
+          </div>          */}
         </div>
       </div>
     </nav>

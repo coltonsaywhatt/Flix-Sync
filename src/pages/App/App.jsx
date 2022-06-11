@@ -14,38 +14,74 @@ import TopRatedTVShows from '../../components/TVShows/TopRatedTVShows/TopRatedTV
 import './App.css';
 import SearchFlix from '../../components/SearchFlix/SearchFlix';
 import * as Moviesapi from '../../utilities/movies-api'
-import MovieDetails from '../../components/MovieDetails/MovieDetails';
+import * as TvShowAPI from '../../utilities/tvshows-api'
 
 function App() {
   const [user, setUser] = useState(getUser());
   const [results, setResults] = useState([]);
   const [selectedMedia, setSelectedMedia] = useState ({})
+  // const [selectedTvMedia, setSelectedTvMedia] = useState ({})
   
   async function changeSelectedMedia (newMedia) {
     const movieDetails = await Moviesapi.getDetails(newMedia.id);
     setSelectedMedia(movieDetails);
-    // console.log(movieDetails)
   }
+
+  async function addMovie (newMedia) {
+    const movieObject = {
+      title: newMedia.title,
+      poster_path: newMedia.poster_path,
+      release_date: newMedia.release_date,
+      runtime: newMedia.runtime,
+      genres : newMedia.genres.map(g => g.name),
+      overview: newMedia.overview,
+      backdrop_path: newMedia.backdrop_path,
+      apiId: newMedia.id,
+    }
+    const movie = await Moviesapi.add(movieObject);
+    // setSelectedMedia(movieDetails);
+  }
+
+  async function addTvShow (newMedia) {
+    const tvObject = {
+      name: newMedia.name,
+      poster_path: newMedia.poster_path,
+      first_air_date: newMedia.first_air_date,
+      runtime: newMedia.episode_run_time,
+      genres : newMedia.genres.map(g => g.name),
+      overview: newMedia.overview,
+      backdrop_path: newMedia.backdrop_path,
+      apiId: newMedia.id,
+    }
+    const movie = await TvShowAPI.add(tvObject);
+    // setSelectedMedia(tvDetails);
+  }
+
+
+  // async function changeSelectedTvMedia (newMedia) {
+  //   const tvshowDetails = await TvShowAPI.getTvDetails(newMedia.id);
+  //   setSelectedTvMedia(tvshowDetails);
+  // }
 
   return (
     <main className="App">
       { user ?
         <>
-          <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} />
+          {/* <TVShowDetails changeSelectedTvMedia= {changeSelectedTvMedia} selectedTvMedia= {selectedTvMedia} /> */}
           <NavBar user={user} setUser={setUser} setResults={setResults} />
           <Routes>
             {/* Route components in here */}
-            <Route path="/search" element={<SearchFlix results={results} selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia}/>} />
+            <Route path="/search" element={<SearchFlix results={results} selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addMovie={addMovie} addTvShow={addTvShow} />} />
             
-            <Route path="/now-playing-movies" element={<NowPlayingMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} />} />
-            <Route path="/popular-movies" element={<PopularMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} />} />
-            <Route path="/top-rated-movies" element={<TopRatedMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} />} />
-            <Route path="/upcoming-movies" element={<UpcomingMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} />} />
+            <Route path="/now-playing-movies" element={<NowPlayingMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addMovie={addMovie} />} />
+            <Route path="/popular-movies" element={<PopularMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addMovie={addMovie} />} />
+            <Route path="/top-rated-movies" element={<TopRatedMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addMovie={addMovie} />} />
+            <Route path="/upcoming-movies" element={<UpcomingMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addMovie={addMovie} />} />
 
-            <Route path="/airing-today-tVShows" element={<AiringTodayTVShows changeSelectedMedia={changeSelectedMedia}  />} />
-            <Route path="/on-tv-tVShows" element={<OnTvTVShows changeSelectedMedia={changeSelectedMedia} />} />
-            <Route path="/popular-tVShows" element={<PopularTVShows changeSelectedMedia={changeSelectedMedia} />} />
-            <Route path="/top-rated-tVShows" element={<TopRatedTVShows changeSelectedMedia={changeSelectedMedia} />} />
+            <Route path="/airing-today-tVShows" element={<AiringTodayTVShows selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addTvShow={addTvShow} />} />
+            <Route path="/on-tv-tVShows" element={<OnTvTVShows selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addTvShow={addTvShow}/>} />
+            <Route path="/popular-tVShows" element={<PopularTVShows selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addTvShow={addTvShow} />} />
+            <Route path="/top-rated-tVShows" element={<TopRatedTVShows selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addTvShow={addTvShow} />} />
           </Routes>
         </>
         :

@@ -19,7 +19,7 @@ function MovieCard(props) {
       </div>         
       <div className='content'>
         <h2>{props.movie.title}</h2>
-        <p>{props.movie.release_date}</p>
+        <p>{props.movie.release_date.substring(0, 4)}</p>
       </div>
     </div>
   )
