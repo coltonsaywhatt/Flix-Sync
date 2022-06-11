@@ -33,7 +33,7 @@ function SearchFlix({results, changeSelectedMedia, changeSelectedTvMedia, select
           </div>
         </div>
       </div>
-      <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} addMovie={addMovie} addTvShow={addTvShow} />
+      {/* <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} addMovie={addMovie} addTvShow={addTvShow} /> */}
     </>
   )
 }

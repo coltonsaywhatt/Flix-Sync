@@ -39,7 +39,7 @@ function NowPlayingMovies({changeSelectedMedia, selectedMedia, addMovie}) {
           </div>
         </div>
       </div>
-      <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} addMovie={addMovie} />
+      {/* <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} addMovie={addMovie} /> */}
     </>
   )
 }

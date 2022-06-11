@@ -5,23 +5,13 @@ import TVShowCard from '../../TVShowCard/TVShowCard';
 import '../TVShows.css';
 import * as tvshowsAPI from "../../../utilities/tvshows-api"
 
-function OnTvTVShows() {
+function OnTvTVShows({changeSelectedTvMedia}) {
   const [onTvTVShows, setOnTvTVShows] = useState([]);
 
   useEffect(() => {
     async function getOnTvTVShows() {
       const onTv = await tvshowsAPI.getOnTv()
       setOnTvTVShows(onTv);
-      // fetch(`https://api.themoviedb.org/3/tv/on_the_air?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-      // .then((req) => {
-      //   return req.json();
-      // })
-      // .then((data) => {
-      //   setOnTvTVShows(data.results);
-      // })
-      // .catch((error) => {
-      //   console.error(error);
-      // })
     }
     getOnTvTVShows();
   },[])
@@ -29,7 +19,7 @@ function OnTvTVShows() {
   return (
     <div className='container'>
       {onTvTVShows.map((tvshow) => (
-        <TVShowCard key= {tvshow.name} tvshow={tvshow}/>
+        <TVShowCard key= {tvshow.name} tvshow={tvshow} changeSelectedTvMedia= {changeSelectedTvMedia} />
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>

@@ -15,12 +15,14 @@ import './App.css';
 import SearchFlix from '../../components/SearchFlix/SearchFlix';
 import * as Moviesapi from '../../utilities/movies-api'
 import * as TvShowAPI from '../../utilities/tvshows-api'
+import MovieDetails from '../../components/MovieDetails/MovieDetails';
+import TVShowDetails from '../../components/TVShowDetails/TVShowDetails';
 
 function App() {
   const [user, setUser] = useState(getUser());
   const [results, setResults] = useState([]);
   const [selectedMedia, setSelectedMedia] = useState ({})
-  // const [selectedTvMedia, setSelectedTvMedia] = useState ({})
+  const [selectedTvMedia, setSelectedTvMedia] = useState ({})
   
   async function changeSelectedMedia (newMedia) {
     const movieDetails = await Moviesapi.getDetails(newMedia.id);
@@ -58,30 +60,31 @@ function App() {
   }
 
 
-  // async function changeSelectedTvMedia (newMedia) {
-  //   const tvshowDetails = await TvShowAPI.getTvDetails(newMedia.id);
-  //   setSelectedTvMedia(tvshowDetails);
-  // }
+  async function changeSelectedTvMedia (newMedia) {
+    const tvshowDetails = await TvShowAPI.getTvDetails(newMedia.id);
+    setSelectedTvMedia(tvshowDetails);
+  }
 
   return (
     <main className="App">
       { user ?
         <>
-          {/* <TVShowDetails changeSelectedTvMedia= {changeSelectedTvMedia} selectedTvMedia= {selectedTvMedia} /> */}
+          <TVShowDetails changeSelectedTvMedia= {changeSelectedTvMedia} selectedTvMedia= {selectedTvMedia} />
+          <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} addMovie={addMovie} />
           <NavBar user={user} setUser={setUser} setResults={setResults} />
           <Routes>
             {/* Route components in here */}
-            <Route path="/search" element={<SearchFlix results={results} selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addMovie={addMovie} addTvShow={addTvShow} />} />
+            <Route path="/search" element={<SearchFlix results={results} selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} selectedTvMedia={selectedTvMedia} changeSelectedTvMedia={changeSelectedTvMedia} addMovie={addMovie} addTvShow={addTvShow} />} />
             
             <Route path="/now-playing-movies" element={<NowPlayingMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addMovie={addMovie} />} />
             <Route path="/popular-movies" element={<PopularMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addMovie={addMovie} />} />
             <Route path="/top-rated-movies" element={<TopRatedMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addMovie={addMovie} />} />
             <Route path="/upcoming-movies" element={<UpcomingMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addMovie={addMovie} />} />
 
-            <Route path="/airing-today-tVShows" element={<AiringTodayTVShows selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addTvShow={addTvShow} />} />
-            <Route path="/on-tv-tVShows" element={<OnTvTVShows selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addTvShow={addTvShow}/>} />
-            <Route path="/popular-tVShows" element={<PopularTVShows selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addTvShow={addTvShow} />} />
-            <Route path="/top-rated-tVShows" element={<TopRatedTVShows selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addTvShow={addTvShow} />} />
+            <Route path="/airing-today-tVShows" element={<AiringTodayTVShows selectedTvMedia={selectedTvMedia} changeSelectedTvMedia={changeSelectedTvMedia} addTvShow={addTvShow} />} />
+            <Route path="/on-tv-tVShows" element={<OnTvTVShows selectedTvMedia={selectedTvMedia} changeSelectedTvMedia={changeSelectedTvMedia} addTvShow={addTvShow}/>} />
+            <Route path="/popular-tVShows" element={<PopularTVShows selectedTvMedia={selectedTvMedia} changeSelectedTvMedia={changeSelectedTvMedia} addTvShow={addTvShow} />} />
+            <Route path="/top-rated-tVShows" element={<TopRatedTVShows selectedTvMedia={selectedTvMedia} changeSelectedTvMedia={changeSelectedTvMedia} addTvShow={addTvShow} />} />
           </Routes>
         </>
         :

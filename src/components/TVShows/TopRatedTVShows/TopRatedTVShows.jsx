@@ -5,23 +5,13 @@ import TVShowCard from '../../TVShowCard/TVShowCard';
 import '../TVShows.css';
 import * as tvshowsAPI from "../../../utilities/tvshows-api";
 
-function TopRatedTVShows() {
+function TopRatedTVShows({changeSelectedTvMedia}) {
   const [topRatedTVShows, setTopRatedTVShows] = useState([]);
 
   useEffect(() => {
     async function getTopRatedTVShows() {
       const topRated = await tvshowsAPI.getTopRated()
       setTopRatedTVShows(topRated);
-      // fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-      // .then((req) => {
-      //   return req.json();
-      // })
-      // .then((data) => {
-      //   setTopRatedTVShows(data.results);
-      // })
-      // .catch((error) => {
-      //   console.error(error);
-      // })
     }
     getTopRatedTVShows();
   },[])
@@ -29,7 +19,7 @@ function TopRatedTVShows() {
   return (
     <div className='container'>
       {topRatedTVShows.map((tvshow) => (
-        <TVShowCard key= {tvshow.name} tvshow={tvshow}/>
+        <TVShowCard key= {tvshow.name} tvshow={tvshow} changeSelectedTvMedia= {changeSelectedTvMedia} />
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>

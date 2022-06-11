@@ -5,23 +5,13 @@ import TVShowCard from '../../TVShowCard/TVShowCard';
 import '../TVShows.css';
 import * as tvshowsAPI from "../../../utilities/tvshows-api";
 
-function PopularTVShows() {
+function PopularTVShows({changeSelectedTvMedia}) {
   const [popularTVShows, setPopularTVShows] = useState([]);
 
   useEffect(() => {
     async function getPopularTVShows() {
       const popular = await tvshowsAPI.getPopular()
       setPopularTVShows(popular);
-      // fetch(`https://api.themoviedb.org/3/tv/popular?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${page}`)
-      // .then((req) => {
-      //   return req.json();
-      // })
-      // .then((data) => {
-      //   setPopularTVShows(data.results);
-      // })
-      // .catch((error) => {
-      //   console.error(error);
-      // })
     }
     getPopularTVShows();
   },[])
@@ -29,7 +19,7 @@ function PopularTVShows() {
   return (
     <div className='container'>
       {popularTVShows.map((tvshow) => (
-        <TVShowCard key= {tvshow.name} tvshow={tvshow}/>
+        <TVShowCard key= {tvshow.name} tvshow={tvshow} changeSelectedTvMedia= {changeSelectedTvMedia} />
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>

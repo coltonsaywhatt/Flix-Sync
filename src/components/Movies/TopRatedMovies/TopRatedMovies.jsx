@@ -13,16 +13,6 @@ function TopRatedMovies({changeSelectedMedia, selectedMedia, addMovie}) {
     async function getTopRatedMovies() {
       const topRated = await moviesAPI.getTopRated()
       setTopRatedMovies(topRated);
-      // fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=1`)
-      // .then((req) => {
-      //   return req.json();
-      // })
-      // .then((data) => {
-      //   setTopRatedMovies(data.results);
-      // })
-      // .catch((error) => {
-      //   console.error(error);
-      // })
     }
     getTopRatedMovies();
   },[])
@@ -49,7 +39,7 @@ function TopRatedMovies({changeSelectedMedia, selectedMedia, addMovie}) {
           </div>
         </div>
       </div>
-      <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} addMovie={addMovie} />
+      {/* <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} addMovie={addMovie} /> */}
     </>
   )
 }

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import TVShowCard from '../../TVShowCard/TVShowCard';
 import '../TVShows.css';
 import * as TvShowAPI from "../../../utilities/tvshows-api";
+import TVShowDetails from '../../TVShowDetails/TVShowDetails';
 
 function AiringTodayTVShows({changeSelectedTvMedia}) {
   const [airingTodayTVShows, setAiringTodayTVShows] = useState([]);
@@ -19,7 +20,7 @@ function AiringTodayTVShows({changeSelectedTvMedia}) {
   return (
     <div className='container'>
       {airingTodayTVShows.map((tvshow) => (
-        <TVShowCard key= {tvshow.name} tvshow={tvshow} changeSelectedTvMedia= {changeSelectedTvMedia}/>
+        <TVShowCard key= {tvshow.name} tvshow={tvshow} changeSelectedTvMedia= {changeSelectedTvMedia} />
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>
