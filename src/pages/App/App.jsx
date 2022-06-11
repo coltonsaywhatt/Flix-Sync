@@ -53,7 +53,7 @@ function App() {
       backdrop_path: newMedia.backdrop_path,
       apiId: newMedia.id,
     }
-    const movie = await TvShowAPI.add(tvObject);
+    const tv = await TvShowAPI.add(tvObject);
     // setSelectedMedia(tvDetails);
   }
 

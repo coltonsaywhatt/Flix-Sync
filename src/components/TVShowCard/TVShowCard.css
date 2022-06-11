@@ -51,6 +51,7 @@
   width: 100%;
   word-wrap: normal;
   overflow-wrap: break-word;
+  padding-bottom: 10px;
 }
 
 .content p {
@@ -81,9 +82,7 @@
 }
 
 body {
-  /* background-image: url('https://wallpaperaccess.com/full/752715.jpg'); */
-  background-image: url('https://i.ibb.co/4mmB67v/752715.jpg');
-  background-size: cover;
-  /* filter: blur(8px);
-  -webkit-filter: blur(8px); */
+  /* background-image: url('https://i.ibb.co/4mmB67v/752715.jpg');
+  background-size: cover; */
+  background: url(https://i.ibb.co/5hCKBGx/752715-1.jpg) no-repeat center center fixed;
 }
