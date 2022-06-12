@@ -3,7 +3,7 @@ import MovieCard from '../MovieCard/MovieCard';
 import TVShowCard from '../TVShowCard/TVShowCard';
 import '../../components/Movies/Movies.css';
 import '../../components/TVShows/TVShows.css';
-import MovieDetails from '../MovieDetails/MovieDetails';
+
 
 function SearchFlix({results, changeSelectedMedia, changeSelectedTvMedia, selectedMedia, addMovie, addTvShow}) {
     
@@ -33,7 +33,6 @@ function SearchFlix({results, changeSelectedMedia, changeSelectedTvMedia, select
           </div>
         </div>
       </div>
-      {/* <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} addMovie={addMovie} addTvShow={addTvShow} /> */}
     </>
   )
 }

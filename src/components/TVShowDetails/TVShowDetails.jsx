@@ -20,7 +20,7 @@ function TVShowDetails(props) {
           </div>
           <div className="tv_social">
             <ul>
-              <li><button className='watchlist-btn' onClick={()=>{props.addTv(props.selectedTvMedia)}}><i className="fa-solid fa-bookmark"></i>&nbsp; Add to watch list</button></li>
+              <li><button className='watchlist-btn' onClick={()=>{props.addTvShow(props.selectedTvMedia)}}><i className="fa-solid fa-bookmark"></i>&nbsp; Add to watch list</button></li>
               <li><button className='watchlist-btn'><i className="fa-solid fa-circle-check"></i>&nbsp; Add to watched list</button></li>
             </ul>
           </div>

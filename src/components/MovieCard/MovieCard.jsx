@@ -11,7 +11,7 @@ function MovieCard(props) {
     <div className='movieCard' onClick={handleClick}>
       <div className='image'>
         <div className='image-wrapper'>
-          <img src= {`https://image.tmdb.org/t/p/original${props.movie.poster_path}`} alt="" />
+          <img src={`https://image.tmdb.org/t/p/original${props.movie.poster_path}`} alt="" />
         </div>
         <div className='rating'>
           <h4>{props.movie.vote_average}</h4>          

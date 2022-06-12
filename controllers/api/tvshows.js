@@ -10,7 +10,7 @@ module.exports = {
 };
 
 async function getAiringToday(req, res) {
-  const tvshows = await fetch(`https://api.themoviedb.org/3/tv/airing_today?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=1`)
+  const tvshows = await fetch(`https://api.themoviedb.org/3/tv/airing_today?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${req.query.page}`)
       .then((res) => {
         return res.json();
       })
@@ -20,7 +20,7 @@ async function getAiringToday(req, res) {
 }
 
 async function getOnTv(req, res) {
-  const tvshows = await fetch(`https://api.themoviedb.org/3/tv/on_the_air?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=1`)
+  const tvshows = await fetch(`https://api.themoviedb.org/3/tv/on_the_air?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${req.query.page}`)
       .then((res) => {
         return res.json();
       })
@@ -30,7 +30,7 @@ async function getOnTv(req, res) {
 }
 
 async function getPopular(req, res) {
-  const tvshows = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=1`)
+  const tvshows = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${req.query.page}`)
       .then((res) => {
         return res.json();
       })
@@ -40,7 +40,7 @@ async function getPopular(req, res) {
 }
 
 async function getTopRated(req, res) {
-  const tvshows = await fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=1`)
+  const tvshows = await fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=${req.query.page}`)
       .then((res) => {
         return res.json();
       })
@@ -70,7 +70,7 @@ async function addToTvList(req, res) {
 
   } else {
       req.body.watchList = req.user._id;
-      const newTvList = new Movie(req.body);
+      const newTvList = new Tv(req.body);
       await newTvList.save();
       res.json(newTvList);
   }

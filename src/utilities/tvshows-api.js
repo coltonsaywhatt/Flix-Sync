@@ -1,20 +1,20 @@
 import sendRequest from './send-request';
 const BASE_URL = '/api/tvshows';
 
-export function getAiringToday() {
-  return sendRequest(`${BASE_URL}/airingToday`);
+export function getAiringToday(page) {
+  return sendRequest(`${BASE_URL}/airingToday?page=${page}`);
 }
 
-export function getOnTv() {
-  return sendRequest(`${BASE_URL}/onTv`);
+export function getOnTv(page) {
+  return sendRequest(`${BASE_URL}/onTv?page=${page}`);
 }
 
-export function getPopular() {
-  return sendRequest(`${BASE_URL}/popular`);
+export function getPopular(page) {
+  return sendRequest(`${BASE_URL}/popular?page=${page}`);
 }
 
-export function getTopRated() {
-  return sendRequest(`${BASE_URL}/topRated`);
+export function getTopRated(page) {
+  return sendRequest(`${BASE_URL}/topRated?page=${page}`);
 }
 
 export function getTvDetails(id) {

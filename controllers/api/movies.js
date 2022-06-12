@@ -8,11 +8,12 @@ module.exports = {
   getUpcoming,
   getSearch,
   getDetails,
-  addToWatchList,  
+  addToWatchList,
+  getWatchList,  
 };
 
 async function getNowPlaying(req, res) {
-  const movies = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.API_KEY}&language=en-US&page=1`)
+  const movies = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.API_KEY}&language=en-US&page=${req.query.page}`)
       .then((res) => {
         return res.json();
       })
@@ -22,7 +23,7 @@ async function getNowPlaying(req, res) {
 }
 
 async function getPopular(req, res) {
-  const movies = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`)
+  const movies = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=${req.query.page}`)
       .then((res) => {
         return res.json();
       })
@@ -32,7 +33,7 @@ async function getPopular(req, res) {
 }
 
 async function getTopRated(req, res) {
-  const movies = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=1`)
+  const movies = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=en-US&page=${req.query.page}`)
       .then((res) => {
         return res.json();
       })
@@ -42,7 +43,7 @@ async function getTopRated(req, res) {
 }
 
 async function getUpcoming(req, res) {
-  const movies = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}&language=en-US&page=1`)
+  const movies = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}&language=en-US&page=${req.query.page}`)
       .then((res) => {
         return res.json();
       })
@@ -52,7 +53,7 @@ async function getUpcoming(req, res) {
 }
 
 async function getSearch(req, res) {
-  const search = await fetch(`https://api.themoviedb.org/3/search/multi?&query=${req.body.search}&api_key=${process.env.API_KEY}&language=en-US&page=1&include_adult=false`)
+  const search = await fetch(`https://api.themoviedb.org/3/search/multi?&query=${req.body.search}&api_key=${process.env.API_KEY}&language=en-US&page=${req.query.page}&include_adult=false`)
   .then((res) => {
     return res.json();
   })
@@ -86,4 +87,9 @@ async function addToWatchList(req, res) {
       await newWatchList.save();
       res.json(newWatchList);
   }
+}
+
+async function getWatchList(req, res) {
+  const movies= await Movie.find({watchList:{'$in':[req.user._id]}})
+  res.json(movies)
 }

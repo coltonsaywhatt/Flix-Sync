@@ -17,6 +17,7 @@ import * as Moviesapi from '../../utilities/movies-api'
 import * as TvShowAPI from '../../utilities/tvshows-api'
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
 import TVShowDetails from '../../components/TVShowDetails/TVShowDetails';
+import WatchList from '../../components/WatchList/WatchList';
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -27,6 +28,11 @@ function App() {
   async function changeSelectedMedia (newMedia) {
     const movieDetails = await Moviesapi.getDetails(newMedia.id);
     setSelectedMedia(movieDetails);
+  }
+
+  async function changeSelectedTvMedia (newMedia) {
+    const tvshowDetails = await TvShowAPI.getTvDetails(newMedia.id);
+    setSelectedTvMedia(tvshowDetails);
   }
 
   async function addMovie (newMedia) {
@@ -58,22 +64,19 @@ function App() {
     const tv = await TvShowAPI.add(tvObject);
     // setSelectedMedia(tvDetails);
   }
-
-
-  async function changeSelectedTvMedia (newMedia) {
-    const tvshowDetails = await TvShowAPI.getTvDetails(newMedia.id);
-    setSelectedTvMedia(tvshowDetails);
-  }
+  
 
   return (
     <main className="App">
       { user ?
         <>
-          <TVShowDetails changeSelectedTvMedia= {changeSelectedTvMedia} selectedTvMedia= {selectedTvMedia} />
+          <TVShowDetails changeSelectedTvMedia= {changeSelectedTvMedia} selectedTvMedia= {selectedTvMedia} addTvShow={addTvShow} />
           <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} addMovie={addMovie} />
           <NavBar user={user} setUser={setUser} setResults={setResults} />
           <Routes>
             {/* Route components in here */}
+            <Route path="/WatchList" element={<WatchList WatchList={WatchList} />} />
+
             <Route path="/search" element={<SearchFlix results={results} selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} selectedTvMedia={selectedTvMedia} changeSelectedTvMedia={changeSelectedTvMedia} addMovie={addMovie} addTvShow={addTvShow} />} />
             
             <Route path="/now-playing-movies" element={<NowPlayingMovies selectedMedia={selectedMedia} changeSelectedMedia={changeSelectedMedia} addMovie={addMovie} />} />

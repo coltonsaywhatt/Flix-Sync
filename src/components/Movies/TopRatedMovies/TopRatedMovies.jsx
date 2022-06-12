@@ -8,24 +8,25 @@ import MovieDetails from '../../MovieDetails/MovieDetails';
 
 function TopRatedMovies({changeSelectedMedia, selectedMedia, addMovie}) {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     async function getTopRatedMovies() {
-      const topRated = await moviesAPI.getTopRated()
+      const topRated = await moviesAPI.getTopRated(page)
       setTopRatedMovies(topRated);
     }
     getTopRatedMovies();
-  },[])
+  },[page])
 
   return (
     <>
       <div className='container'>
         {topRatedMovies.map((movie) => (
-          <MovieCard key = {movie.title} movie={movie} changeSelectedMedia= {changeSelectedMedia} />
+          <MovieCard key={movie.title} movie={movie} changeSelectedMedia={changeSelectedMedia} />
         ))}
         <div className='pagination'>
           <div className='pagination-btn'>
-            {/* <button onClick={() => 
+            <button onClick={() => 
               setPage(page-1)
             }>
               PREVIOUS PAGE
@@ -35,11 +36,10 @@ function TopRatedMovies({changeSelectedMedia, selectedMedia, addMovie}) {
               setPage(page+1)
             }>
               NEXT PAGE
-            </button> */}
+            </button>
           </div>
         </div>
       </div>
-      {/* <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} addMovie={addMovie} /> */}
     </>
   )
 }

@@ -11,5 +11,6 @@ router.get('/upcoming', ensureLoggedIn, moviesCtrl.getUpcoming);
 router.post('/search', ensureLoggedIn, moviesCtrl.getSearch);
 router.post('/details', ensureLoggedIn, moviesCtrl.getDetails);
 router.post('/', ensureLoggedIn, moviesCtrl.addToWatchList);
+router.get('/', ensureLoggedIn, moviesCtrl.getWatchList);
 
 module.exports = router;

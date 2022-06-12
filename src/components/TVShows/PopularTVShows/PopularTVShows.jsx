@@ -5,7 +5,7 @@ import TVShowCard from '../../TVShowCard/TVShowCard';
 import '../TVShows.css';
 import * as tvshowsAPI from "../../../utilities/tvshows-api";
 
-function PopularTVShows({changeSelectedTvMedia}) {
+function PopularTVShows({changeSelectedTvMedia, addTvShow}) {
   const [popularTVShows, setPopularTVShows] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function PopularTVShows({changeSelectedTvMedia}) {
   return (
     <div className='container'>
       {popularTVShows.map((tvshow) => (
-        <TVShowCard key= {tvshow.name} tvshow={tvshow} changeSelectedTvMedia= {changeSelectedTvMedia} />
+        <TVShowCard key={tvshow.name} tvshow={tvshow} changeSelectedTvMedia={changeSelectedTvMedia} />
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>

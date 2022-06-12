@@ -1,24 +1,24 @@
 import sendRequest from './send-request';
 const BASE_URL = '/api/movies';
 
-export function getNowPlaying() {
-  return sendRequest(`${BASE_URL}/nowPlaying`);
+export function getNowPlaying(page) {
+  return sendRequest(`${BASE_URL}/nowPlaying?page=${page}`);
 }
 
-export function getPopular() {
-  return sendRequest(`${BASE_URL}/popular`);
+export function getPopular(page) {
+  return sendRequest(`${BASE_URL}/popular?page=${page}`);
 }
 
-export function getTopRated() {
-  return sendRequest(`${BASE_URL}/topRated`);
+export function getTopRated(page) {
+  return sendRequest(`${BASE_URL}/topRated?page=${page}`);
 }
 
-export function getUpcoming() {
-  return sendRequest(`${BASE_URL}/upcoming`);
+export function getUpcoming(page) {
+  return sendRequest(`${BASE_URL}/upcoming?page=${page}`);
 }
 
-export function getSearch(search) {
-  return sendRequest(`${BASE_URL}/search`, "POST", {search});
+export function getSearch(search, page) {
+  return sendRequest(`${BASE_URL}/search?page=${page}`, "POST", {search});
 }
 
 export function getDetails(id) {
@@ -27,4 +27,7 @@ export function getDetails(id) {
 
 export function add(movie) {
   return sendRequest(BASE_URL, "POST", movie);
+}
+export function watchList() {
+  return sendRequest(BASE_URL)
 }

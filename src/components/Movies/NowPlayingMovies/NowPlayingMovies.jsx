@@ -8,24 +8,25 @@ import MovieDetails from '../../MovieDetails/MovieDetails';
 
 function NowPlayingMovies({changeSelectedMedia, selectedMedia, addMovie}) {
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     async function getNowPlayingMovies() {
-      const nowPlaying = await moviesAPI.getNowPlaying()
+      const nowPlaying = await moviesAPI.getNowPlaying(page)
       setNowPlayingMovies(nowPlaying);
     }
     getNowPlayingMovies();    
-  },[])
+  },[page])
 
   return (
     <>
       <div className='container'>
         {nowPlayingMovies.map((movie) => (
-          <MovieCard key = {movie.title} movie={movie} changeSelectedMedia= {changeSelectedMedia} />
+          <MovieCard key={movie.title} movie={movie} changeSelectedMedia={changeSelectedMedia} />
         ))}
         <div className='pagination'>
           <div className='pagination-btn'>
-            {/* <button onClick={() => 
+            <button onClick={() => 
               setPage(page-1)
             }>
               PREVIOUS PAGE
@@ -35,11 +36,10 @@ function NowPlayingMovies({changeSelectedMedia, selectedMedia, addMovie}) {
               setPage(page+1)
             }>
               NEXT PAGE
-            </button> */}
+            </button>
           </div>
         </div>
       </div>
-      {/* <MovieDetails changeSelectedMedia= {changeSelectedMedia} selectedMedia= {selectedMedia} addMovie={addMovie} /> */}
     </>
   )
 }

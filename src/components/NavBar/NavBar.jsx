@@ -14,17 +14,6 @@ export default function NavBar({ user, setUser, setResults }) {
     const searchResults = await moviesAPI.getSearch(search)
     setResults(searchResults)
     navigate("/search")
-
-    // fetch(`https://api.themoviedb.org/3/search/multi?&query=${search}&api_key=0debf7e322c372742f6079fe3d10685b&language=en-US&page=1&include_adult=false`)
-    // .then((req) => {
-    //   return req.json();
-    // })
-    // .then((data) => {
-    //   console.log(data)
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    // })
   }
 
   function handleLogOut() {
@@ -83,8 +72,8 @@ export default function NavBar({ user, setUser, setResults }) {
                 <i class="fa fa-caret-down"></i>
               </button>
               <div className='dropdown-content'>
-                <Link to="">Watch List</Link>
-                <Link to="">Watched List</Link>
+                <Link to="/WatchList">Watch List</Link>
+                <Link to="/WatchedList">Watched List</Link>
               </div>
             </div>
             <div className='dropdown'>
@@ -96,11 +85,6 @@ export default function NavBar({ user, setUser, setResults }) {
               </div>
             </div>
           </div>          
-          {/* <div>
-            <span>Welcome, {user.name}</span>
-            &nbsp; | &nbsp;
-            <Link to="" onClick={handleLogOut}>Log Out</Link> 
-          </div>          */}
         </div>
       </div>
     </nav>
