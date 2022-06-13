@@ -9,6 +9,7 @@ const tvSchema = new Schema({
   genres : [{ type: String }],
   overview: { type: String },
   backdrop_path: { type: String },
+  vote_average: {type: String},
   apiId: { type: Number },
   watchList: [{ type: Schema.Types.ObjectId, ref: "User" }],
   watchedList: [{ type: Schema.Types.ObjectId, ref: "User" }],

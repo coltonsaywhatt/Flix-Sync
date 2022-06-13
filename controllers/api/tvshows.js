@@ -59,7 +59,6 @@ async function getTvDetails(req, res) {
 }
 
 async function addToTvList(req, res) {
-  console.log(req.body)
   let tv = await Tv.findOne({apiId: req.body.apiId})
   if (tv) {
     let user = tv.watchList.includes(req.user_id)

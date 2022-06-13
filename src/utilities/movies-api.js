@@ -29,5 +29,9 @@ export function add(movie) {
   return sendRequest(BASE_URL, "POST", movie);
 }
 export function watchList() {
-  return sendRequest(BASE_URL)
+  return sendRequest(BASE_URL);
+}
+
+export function deleteMovie(id) {
+  return sendRequest(`${BASE_URL}/${id}`, "DELETE", {id});
 }

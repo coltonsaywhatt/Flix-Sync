@@ -44,6 +44,7 @@ function App() {
       runtime: newMedia.runtime,
       genres : newMedia.genres.map(g => g.name),
       overview: newMedia.overview,
+      vote_average: newMedia.vote_average,
       backdrop_path: newMedia.backdrop_path,
       apiId: newMedia.id,
     }
@@ -59,6 +60,7 @@ function App() {
       runtime: newMedia.episode_run_time,
       genres : newMedia.genres.map(g => g.name),
       overview: newMedia.overview,
+      vote_average: newMedia.vote_average,
       backdrop_path: newMedia.backdrop_path,
       apiId: newMedia.id,
     }
