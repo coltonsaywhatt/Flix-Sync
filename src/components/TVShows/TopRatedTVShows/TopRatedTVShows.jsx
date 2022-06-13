@@ -7,14 +7,15 @@ import * as tvshowsAPI from "../../../utilities/tvshows-api";
 
 function TopRatedTVShows({changeSelectedTvMedia, addTvShow}) {
   const [topRatedTVShows, setTopRatedTVShows] = useState([]);
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     async function getTopRatedTVShows() {
-      const topRated = await tvshowsAPI.getTopRated()
+      const topRated = await tvshowsAPI.getTopRated(page)
       setTopRatedTVShows(topRated);
     }
     getTopRatedTVShows();
-  },[])
+  },[page])
 
   return (
     <div className='container'>
@@ -23,7 +24,7 @@ function TopRatedTVShows({changeSelectedTvMedia, addTvShow}) {
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>
-          {/* <button onClick={() => 
+          <button onClick={() => 
             setPage(page-1)
           }>
             PREVIOUS PAGE
@@ -33,7 +34,7 @@ function TopRatedTVShows({changeSelectedTvMedia, addTvShow}) {
             setPage(page+1)
           }>
             NEXT PAGE
-          </button> */}
+          </button>
         </div>
       </div>
     </div>

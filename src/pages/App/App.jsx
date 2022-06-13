@@ -18,6 +18,7 @@ import * as TvShowAPI from '../../utilities/tvshows-api'
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
 import TVShowDetails from '../../components/TVShowDetails/TVShowDetails';
 import WatchList from '../../components/WatchList/WatchList';
+import WatchMovie from '../../components/WatchListCard/WatchMovie/WatchMovie';
 
 function App() {
   const [user, setUser] = useState(getUser());

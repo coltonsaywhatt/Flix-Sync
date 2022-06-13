@@ -19,7 +19,7 @@ function TVShowCard(props) {
       </div>
       <div className='content'>        
         <h2>{props.tvshow.name}</h2>
-        <p>{props.tvshow.first_air_date.substring(0, 4)}</p>
+        <p>{props.tvshow.first_air_date}</p>
       </div> 
     </div>
   )

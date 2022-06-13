@@ -1,0 +1,9 @@
+@import url('http://fonts.cdnfonts.com/css/bastamanbold');
+
+.watchlist {
+  /* font-family: 'Bassun personal use', sans-serif; */
+  font-family: 'BastamanBold', sans-serif;
+  color: white;
+  font-size: 50px;
+  text-shadow: 2px 2px 4px #000000;
+}

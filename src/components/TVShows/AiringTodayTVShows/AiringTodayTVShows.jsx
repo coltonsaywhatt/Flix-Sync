@@ -8,14 +8,15 @@ import TVShowDetails from '../../TVShowDetails/TVShowDetails';
 
 function AiringTodayTVShows({changeSelectedTvMedia, addTvShow}) {
   const [airingTodayTVShows, setAiringTodayTVShows] = useState([]);
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     async function getAiringTodayTVShows() {
-      const airingToday = await TvShowAPI.getAiringToday()
+      const airingToday = await TvShowAPI.getAiringToday(page)
       setAiringTodayTVShows(airingToday);
     }
     getAiringTodayTVShows();
-  },[])
+  },[page])
 
   return (
     <div className='container'>
@@ -24,7 +25,7 @@ function AiringTodayTVShows({changeSelectedTvMedia, addTvShow}) {
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>
-          {/* <button onClick={() => 
+          <button onClick={() => 
             setPage(page-1)
           }>
             PREVIOUS PAGE
@@ -34,7 +35,7 @@ function AiringTodayTVShows({changeSelectedTvMedia, addTvShow}) {
             setPage(page+1)
           }>
             NEXT PAGE
-          </button> */}
+          </button>
         </div>
       </div>
     </div>

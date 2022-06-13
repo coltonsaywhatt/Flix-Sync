@@ -7,14 +7,15 @@ import * as tvshowsAPI from "../../../utilities/tvshows-api"
 
 function OnTvTVShows({changeSelectedTvMedia, addTvShow}) {
   const [onTvTVShows, setOnTvTVShows] = useState([]);
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     async function getOnTvTVShows() {
-      const onTv = await tvshowsAPI.getOnTv()
+      const onTv = await tvshowsAPI.getOnTv(page)
       setOnTvTVShows(onTv);
     }
     getOnTvTVShows();
-  },[])
+  },[page])
 
   return (
     <div className='container'>
@@ -23,7 +24,7 @@ function OnTvTVShows({changeSelectedTvMedia, addTvShow}) {
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>
-          {/* <button onClick={() => 
+          <button onClick={() => 
             setPage(page-1)
           }>
             PREVIOUS PAGE
@@ -33,7 +34,7 @@ function OnTvTVShows({changeSelectedTvMedia, addTvShow}) {
             setPage(page+1)
           }>
             NEXT PAGE
-          </button> */}
+          </button>
         </div>
       </div>
     </div>

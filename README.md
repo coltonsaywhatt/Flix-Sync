@@ -29,12 +29,12 @@ Flix Sync was made in Mongo DB | React | Node.Js
 
   | Description | Screenshot |
   |------------ | ------------|
-  | <h3 align="center">Login</h3> | <img src=""/>
+  | <h3 align="center">Login</h3> | <img src="https://i.ibb.co/ZcYf5tD/Screen-Shot-2022-06-12-at-9-36-11-PM.png"/>
   | <h3 align="center">Landing</h3> | <img src=""/>
-  | <h3 align="center">Movies</h3> | <img src=""/>
-  | <h3 align="center">TV Shows</h3> | <img src=""/>
-  | <h3 align="center">Flix Details</h3> | <img src=""/>
-  | <h3 align="center">Watch List</h3> | <img src=""/>
+  | <h3 align="center">Movies</h3> | <img src="https://i.ibb.co/J5gRVzt/Screen-Shot-2022-06-12-at-9-36-44-PM.png"/>
+  | <h3 align="center">TV Shows</h3> | <img src="https://i.ibb.co/BsJd2jb/Screen-Shot-2022-06-12-at-10-46-28-PM.png"/>
+  | <h3 align="center">Flix Details</h3> | <img src="https://i.ibb.co/VjWS4rg/Screen-Shot-2022-06-12-at-11-03-59-PM.png"/>
+  | <h3 align="center">Watch List</h3> | <img src="https://i.ibb.co/G976Lyk/Screen-Shot-2022-06-12-at-10-58-19-PM.png"/>
   | <h3 align="center">Watched List</h3> | <img src=""/>
 
 

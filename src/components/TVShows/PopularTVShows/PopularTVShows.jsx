@@ -7,14 +7,15 @@ import * as tvshowsAPI from "../../../utilities/tvshows-api";
 
 function PopularTVShows({changeSelectedTvMedia, addTvShow}) {
   const [popularTVShows, setPopularTVShows] = useState([]);
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     async function getPopularTVShows() {
-      const popular = await tvshowsAPI.getPopular()
+      const popular = await tvshowsAPI.getPopular(page)
       setPopularTVShows(popular);
     }
     getPopularTVShows();
-  },[])
+  },[page])
 
   return (
     <div className='container'>
@@ -23,7 +24,7 @@ function PopularTVShows({changeSelectedTvMedia, addTvShow}) {
       ))}
       <div className='pagination'>
         <div className='pagination-btn'>
-          {/* <button onClick={() => 
+          <button onClick={() => 
             setPage(page-1)
           }>
             PREVIOUS PAGE
@@ -33,7 +34,7 @@ function PopularTVShows({changeSelectedTvMedia, addTvShow}) {
             setPage(page+1)
           }>
             NEXT PAGE
-          </button> */}
+          </button>
         </div>
       </div>
     </div>

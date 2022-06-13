@@ -1,9 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import * as Moviesapi from '../../utilities/movies-api'
-import './WatchList.css'
-import MovieCard from '../MovieCard/MovieCard'
-import '../MovieCard/MovieCard.css'
+import './WatchList.css';
+import WatchMovie from '../WatchListCard/WatchMovie/WatchMovie';
 
 const WatchList = () => {
   const [watch, setWatch] = useState();
@@ -20,21 +19,21 @@ const WatchList = () => {
 //   const remove = await Moviesapi.deleteMovie(id);
 //   setRefresh(!refresh)
 // }
-console.log(watch)
 
   return (
     <>
-
-    {/* <button onClick={deleteCoin}>Remove</button> */}
-    {watch && watch.map(movie => 
-    <p className='render' >{movie.title} | {movie.poster_path} | {movie.release_date} 
-    {/* <MovieCard key={movie.title} movie={movie} */}
-    {/* <button className='watch-btn' onClick={() => deleteMovie(movie._id)}>Remove</button> */}
-    {/* <button className='watch-btn' setRefresh={refresh} onClick={() => deleteMovie(movie._id)}>Remove</button> */}
-    </p> )}
-
+    <div className='container'>
+    <h2 className='watchlist'>My Watch List</h2>  
+      {watch && watch.map(movie => 
+        <WatchMovie className='render' key={movie.title} movie={movie} />          
+      )}
+    </div> 
     </>
   )
 }
 
 export default WatchList
+
+    {/* <button onClick={deleteCoin}>Remove</button> */}
+    {/* <button className='watch-btn' onClick={() => deleteMovie(movie._id)}>Remove</button> */}
+    {/* <button className='watch-btn' setRefresh={refresh} onClick={() => deleteMovie(movie._id)}>Remove</button> */}
