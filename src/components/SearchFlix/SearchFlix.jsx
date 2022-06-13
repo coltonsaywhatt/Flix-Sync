@@ -19,17 +19,6 @@ function SearchFlix({results, changeSelectedMedia, changeSelectedTvMedia, select
         })}
         <div className='pagination'>
           <div className='pagination-btn'>
-            {/* <button onClick={() => 
-              setPage(page-1)
-            }>
-              PREVIOUS PAGE
-            </button>
-            
-            <button onClick={() => 
-              setPage(page+1)
-            }>
-              NEXT PAGE
-            </button> */}
           </div>
         </div>
       </div>
