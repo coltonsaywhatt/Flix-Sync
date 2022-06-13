@@ -21,6 +21,6 @@ export function getTvDetails(id) {
   return sendRequest(`${BASE_URL}/tvDetails`, "POST", {id});
 }
 
-export function add(tv) {
-  return sendRequest(BASE_URL, "POST", tv);
-}
+// export function add(tv) {
+//   return sendRequest(BASE_URL, "POST", tv);
+// }

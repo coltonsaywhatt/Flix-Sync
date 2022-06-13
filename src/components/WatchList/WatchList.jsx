@@ -26,9 +26,9 @@ const WatchList = () => {
       <h2 className='watchlist'>My Watch List</h2>  
         {watch && watch.map(movie =>
         <>
-          <button onClick={() => deleteMovie(movie._id) }>
+          {/* <button onClick={() => deleteMovie(movie._id) }>
             <i class="fa-solid fa-trash-can"></i>
-          </button>
+          </button> */}
           
           <WatchMovie className='render' key={movie.title} movie={movie} />
           

@@ -6,7 +6,7 @@ module.exports = {
   getPopular,
   getTopRated,
   getTvDetails,
-  addToTvList,    
+  // addToTvList,    
 };
 
 async function getAiringToday(req, res) {
@@ -58,19 +58,19 @@ async function getTvDetails(req, res) {
   res.json(tvshow);      
 }
 
-async function addToTvList(req, res) {
-  let tv = await Tv.findOne({apiId: req.body.apiId})
-  if (tv) {
-    let user = tv.watchList.includes(req.user_id)
-    if (user) return
-      tv.watchList.push(req.user._id);
-      await tv.save();
-      res.json(tv);
+// async function addToTvList(req, res) {
+//   let tv = await Tv.findOne({apiId: req.body.apiId})
+//   if (tv) {
+//     let user = tv.watchList.includes(req.user_id)
+//     if (user) return
+//       tv.watchList.push(req.user._id);
+//       await tv.save();
+//       res.json(tv);
 
-  } else {
-      req.body.watchList = req.user._id;
-      const newTvList = new Tv(req.body);
-      await newTvList.save();
-      res.json(newTvList);
-  }
-}
+//   } else {
+//       req.body.watchList = req.user._id;
+//       const newTvList = new Tv(req.body);
+//       await newTvList.save();
+//       res.json(newTvList);
+//   }
+// }
