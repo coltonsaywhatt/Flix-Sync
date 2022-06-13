@@ -10,15 +10,16 @@ module.exports = {
   getDetails,
   addToWatchList,
   getWatchList,
-  deleteMovie,  
+  // deleteMovie,  
 };
 
-async function deleteMovie(res, req) {
-  console.log(req.req)
-  console.log(req.req.params)
-  const removeMovie = await Movie.findByIdAndDelete(req.req.body._id)
-  res.res.json(removeMovie);
-}
+// async function deleteMovie(res, req) {
+//   console.log(req.params.id)
+//   console.log(req.req.params)
+//   const removeMovie = await Movie.findOne({_id: req.req.body._id})
+//   removeMovie.
+//   res.res.json(removeMovie);
+// }
 
 async function getNowPlaying(req, res) {
   const movies = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.API_KEY}&language=en-US&page=${req.query.page}`)

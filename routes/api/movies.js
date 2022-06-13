@@ -13,6 +13,6 @@ router.post('/details', ensureLoggedIn, moviesCtrl.getDetails);
 router.post('/', ensureLoggedIn, moviesCtrl.addToWatchList);
 router.get('/', ensureLoggedIn, moviesCtrl.getWatchList);
 
-router.delete('/:id', ensureLoggedIn, moviesCtrl.deleteMovie);
+// router.delete('/:id', ensureLoggedIn, moviesCtrl.deleteMovie);
 
 module.exports = router;
