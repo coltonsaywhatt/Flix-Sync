@@ -19,6 +19,7 @@ function SearchFlix({results, changeSelectedMedia, changeSelectedTvMedia, select
         })}
         <div className='pagination'>
           <div className='pagination-btn'>
+            
           </div>
         </div>
       </div>
